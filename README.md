@@ -1,4 +1,4 @@
-# Frontend Mentor - Rock, Paper, Scissors Challenge Solution
+# Frontend Mentor - Rock, Paper, Scissors Challenge Solution with React
 
 
 ## Welcome! 👋
