@@ -31,7 +31,7 @@ function App() {
       setScore(prevScore => {
         return prevScore + 1;
       })
-    } else if (playerSelection === computerSelection){
+    } else if (playerSelection === computerSelection) {
       console.log('even')
     } else {
       console.log('computer wins')
@@ -41,7 +41,7 @@ function App() {
     }
   }
 
-  function showModal(){
+  function showModal() {
     console.log('rules clicked')
   }
 
@@ -51,13 +51,24 @@ function App() {
       <Header score={score} />
       {/* <Modal /> */}
 
-      <img src='/images/bg-triangle.svg' alt='triangle'></img>
       <section className='playground'>
+
+        <div className='paper-scissors-div'>
         <Hand type='paper' onClick={playRound} />
-        <Hand type='scissors' onClick={playRound} />
+
+          <Hand type='scissors' onClick={playRound} />
+        </div>
+        <div className='triangle'>
+          <img src='/images/bg-triangle.svg' alt='triangle'></img>
+        </div>
+        <div className='rock-div'>
         <Hand type='rock' onClick={playRound} />
+         
+        </div>
+
+
       </section>
-     <Button text='Rules' onModal={showModal}/>
+      <Button text='Rules' onModal={showModal} />
     </div>
 
 
