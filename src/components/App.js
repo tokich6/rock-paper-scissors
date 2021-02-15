@@ -43,27 +43,24 @@ function App() {
       setScore(prevScore => {
         return prevScore + 1;
       })
-    } else if (
-      (computer === 'rock' && player === 'scissors') ||
-      (computer === 'scissors' && player === 'paper')
-      || (computer === 'paper' && player === 'rock')
-    ) {
+    } else if (player !== computer) { //if not the above and not equal, then comp wins
       console.log('comp wins!')
       setScore(prevScore => {
         return prevScore - 1;
       })
-    } else {
-      console.log('nothing changes');
-      setScore(prevScore => {
-        return prevScore;
-      })
+
+    } else { //player === computer or both are ''
+        console.log('nothing changes');
+        setScore(prevScore => {
+          return prevScore;
+        })
     }
   }
 
   function resetHands() {
     setPlayerSelection('');
     setComputerSelection('')
-    setWinner(false);
+    isWinner && setWinner(false);
     setGameOn(false);
   }
 
