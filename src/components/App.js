@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Header from './Header';
 import Hand from './Hand';
 import Modal from './Modal'
@@ -8,81 +8,102 @@ import Button from './Button';
 function App() {
 
   const [score, setScore] = useState(0);
+  const [playerSelection, setPlayerSelection] = useState('');
+  const [computerSelection, setComputerSelection] = useState('');
+  const [isWinner, setWinner] = useState(false);
 
-  let playerSelection = '';
-  let computerSelection = '';
+  const [gameOn, setGameOn] = useState(false);
+  const [isModalVisible, setModal] = useState(false);
+
   const computerOptions = ['rock', 'paper', 'scissors'];
 
-  function getComputerSelection() {
-    computerSelection = computerOptions[Math.floor(Math.random() * computerOptions.length)]
+  const showModal = () => setModal(true);
+  const closeModal = () => setModal(false);
+
+  const getComputerSelection = () => {
+    let random = computerOptions[Math.floor(Math.random() * computerOptions.length)];
+    return setComputerSelection(random);
   }
+
   function playRound(hand) {
-    playerSelection = hand;
-    console.log(`Player selected: ${playerSelection}`)
+    setPlayerSelection(hand)
     getComputerSelection();
-    console.log(`Computer selected: ${computerSelection}`);
-    updateScore(playerSelection, computerSelection)
+    setGameOn(true);
   }
-  function updateScore(playerSelection, computerSelection) {
-    if ((playerSelection === 'rock' && computerSelection === 'scissors')
-      || (playerSelection === 'scissors' && computerSelection === 'paper')
-      || (playerSelection === 'paper' && computerSelection === 'rock')) {
-      console.log('player wins + 1')
+
+  useEffect(() => {
+    updateScore(playerSelection, computerSelection);
+  }, [playerSelection, computerSelection]);
+
+  function updateScore(player, computer) {
+    if ((player === 'rock' && computer === 'scissors')
+      || (player === 'scissors' && computer === 'paper')
+      || (player === 'paper' && computer === 'rock')) {
+      setWinner(true); // player wins
       setScore(prevScore => {
         return prevScore + 1;
       })
-    } else if (playerSelection === computerSelection) {
-      console.log('even')
-    } else {
-      console.log('computer wins')
+    } else if (
+      (computer === 'rock' && player === 'scissors') ||
+      (computer === 'scissors' && player === 'paper')
+      || (computer === 'paper' && player === 'rock')
+    ) {
+      console.log('comp wins!')
       setScore(prevScore => {
         return prevScore - 1;
+      })
+    } else {
+      console.log('nothing changes');
+      setScore(prevScore => {
+        return prevScore;
       })
     }
   }
 
-  function showModal() {
-    console.log('rules clicked')
+  function resetHands() {
+    setPlayerSelection('');
+    setComputerSelection('')
+    setWinner(false);
+    setGameOn(false);
   }
 
 
   return (
     <div>
       <Header score={score} />
-      {/* <Modal /> */}
+      <Modal onClick={closeModal} style={{ display: isModalVisible ? 'block' : 'none' }} />
 
-      <section className='playground'>
+      {
+        !gameOn ?
+          <section className='playground'>
+            <div className='paper-scissors-div'>
+              <Hand type='paper' onClick={playRound} />
+              <Hand type='scissors' onClick={playRound} />
+            </div>
+            <div className='triangle'>
+              <img src='/images/bg-triangle.svg' alt='triangle'></img>
+            </div>
+            <div className='rock-div'>
+              <Hand type='rock' onClick={playRound} />
+            </div>
+          </section>
+          :
+          <section>
+            <h1>You Picked</h1>
+            <Hand type={playerSelection} />
+            <h1>The house picked</h1>
+            <Hand type={computerSelection} />
+            <h1>{
+              isWinner ? 'You win' : 'You lose'
+            }</h1>
+            <button onClick={resetHands}>Play again</button>
+          </section>
 
-        <div className='paper-scissors-div'>
-        <Hand type='paper' onClick={playRound} />
+      }
 
-          <Hand type='scissors' onClick={playRound} />
-        </div>
-        <div className='triangle'>
-          <img src='/images/bg-triangle.svg' alt='triangle'></img>
-        </div>
-        <div className='rock-div'>
-        <Hand type='rock' onClick={playRound} />
-         
-        </div>
-
-
-      </section>
-      <Button text='Rules' onModal={showModal} />
+      <Button text='Rules' onClick={showModal} />
     </div>
-
-
   )
-  // Score
-  // Rules
-
-  // You Picked
-  // The House Picked
-
-  // You Win
-  // You Lose
-
-  // Play Again
 }
 
 export default App;
