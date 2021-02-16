@@ -67,6 +67,9 @@ body {
 .close-icon {
   text-align: right;
 }
+.close-icon :hover {
+  cursor: pointer;
+}
 .image-rules {
   text-align: center;
 }

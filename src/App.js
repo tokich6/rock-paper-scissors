@@ -1,8 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import Header from './Header';
-import Hand from './Hand';
-import Modal from './Modal'
-import Button from './Button';
+import Header from './components/Header';
+import Hand from './components/Hand';
+import Modal from './components/Modal'
+import Button from './components/Button';
+import { ReactComponent as Triangle } from './assets/images/bg-triangle.svg';
+import { ReactComponent as Paper } from './assets/images/icon-paper.svg';
+import { ReactComponent as Rock } from './assets/images/icon-rock.svg';
+import { ReactComponent as Scissors } from './assets/images/icon-scissors.svg';
 
 
 function App() {
@@ -48,7 +52,6 @@ function App() {
       setScore(prevScore => {
         return prevScore - 1;
       })
-
     } else { //player === computer or both are ''
         console.log('nothing changes');
         setScore(prevScore => {
@@ -56,6 +59,17 @@ function App() {
         })
     }
   }
+
+  const pickHand = hand => {
+    if(hand === 'scissors') {
+      return <Scissors />
+    } else if (hand === 'rock') {
+      return <Rock />;
+    } else {
+      return <Paper />
+    }
+  }
+
 
   function resetHands() {
     setPlayerSelection('');
@@ -66,7 +80,7 @@ function App() {
 
 
   return (
-    <div>
+    <React.Fragment>
       <Header score={score} />
       <Modal onClick={closeModal} style={{ display: isModalVisible ? 'block' : 'none' }} />
 
@@ -74,22 +88,22 @@ function App() {
         !gameOn ?
           <section className='playground'>
             <div className='paper-scissors-div'>
-              <Hand type='paper' onClick={playRound} />
-              <Hand type='scissors' onClick={playRound} />
+              <Hand type='paper' onClick={playRound} src={<Paper />} />
+              <Hand type='scissors' onClick={playRound} src={<Scissors />} />
             </div>
             <div className='triangle'>
-              <img src='/images/bg-triangle.svg' alt='triangle'></img>
+            <Triangle title='triangle' />
             </div>
             <div className='rock-div'>
-              <Hand type='rock' onClick={playRound} />
+              <Hand type='rock' onClick={playRound} src={<Rock />} />
             </div>
           </section>
           :
           <section>
             <h1>You Picked</h1>
-            <Hand type={playerSelection} />
+            <Hand type={playerSelection} src={pickHand(playerSelection)} />
             <h1>The house picked</h1>
-            <Hand type={computerSelection} />
+            <Hand type={computerSelection} src={pickHand(computerSelection)}/>
             <h1>{
               isWinner ? 'You win' : 'You lose'
             }</h1>
@@ -97,9 +111,8 @@ function App() {
           </section>
 
       }
-
       <Button text='Rules' onClick={showModal} />
-    </div>
+    </React.Fragment>
   )
 }
 

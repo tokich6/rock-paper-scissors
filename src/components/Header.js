@@ -1,13 +1,11 @@
-import React from 'react';
 import Score from './Score';
+import { ReactComponent as Logo } from '../assets/images/logo.svg';
 
 function Header(props) {
   return (
     <section className='heading'>
-      <header>
-      <img src='/images/logo.svg' alt='logo'></img>
-      </header>
-      <Score score={props.score}/>
+      <Logo title='logo'/>
+      <Score score={props.score} />
     </section>
   )
 }

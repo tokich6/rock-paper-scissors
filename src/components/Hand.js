@@ -2,13 +2,16 @@ import React from 'react';
 
 function Hand(props) {
 
-  let className = `hand + ${props.type}`;
-  let imgSrc = `/images/icon-${props.type}.svg`;
+  let handStyle = `hand + ${props.type}`;
 
   return (
-  <button className={className} onClick={()=> props.onClick(props.type) }>
-    <img src={imgSrc} alt={props.type}></img>
-  </button>)
+    <React.Fragment>
+      <button className={handStyle} onClick={() => props.onClick(props.type)}>
+        {props.src}
+      </button>
+    </React.Fragment>
+  )
+
 }
 
 export default Hand;
