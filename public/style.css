@@ -11,6 +11,13 @@ body {
   padding: 2rem;
   color: aliceblue;
 }
+.main-container {
+  display: flex;
+  justify-content: center;
+  height: 60vh;
+  width: 90%;
+  margin: 0 auto;
+}
 .heading {
   border-radius: 1rem;
   border: 2px solid hsl(217, 16%, 45%);
@@ -119,18 +126,50 @@ body {
   border-radius: 0.5rem;
   padding: 0.6rem 1.7rem;
   text-transform: uppercase;
+  outline: none;
+  cursor: pointer;
+}
+
+footer .btn {
   color: aliceblue;
   font-size: 0.8rem;
+  background: none;
+}
+
+footer .btn:hover {
+  background: aliceblue;
+  color: hsl(237, 49%, 15%);
+  transition: 0.4s;
+}
+.outcome .btn {
+  color: hsl(237, 49%, 15%);
+  padding: 0.6rem 2.2rem;
+  letter-spacing: 0.1rem;
+  font-weight: 600;
+}
+.outcome .btn:hover {
+  color: hsl(349, 71%, 52%);
+}
+
+.hand-selections {
+  margin-top: 10%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: 100px;
+}
+.outcome-heading {
+  text-transform: uppercase;
+  font-size: 3rem;
+  letter-spacing: .1rem;
+}
+.player-selection h1, .house-selection h1 {
+  text-transform: uppercase;
+  letter-spacing: .1rem;
+  font-weight: 300;
+}
+footer {
   position: fixed;
   bottom: 0;
   right: 0;
   margin: 1rem;
-  background: none;
-  outline: none;
-  cursor: pointer;
-}
-.btn:hover {
-  background: aliceblue;
-  color: hsl(237, 49%, 15%);
-  transition: 0.4s;
 }

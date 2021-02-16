@@ -14,7 +14,7 @@ function App() {
   const [score, setScore] = useState(0);
   const [playerSelection, setPlayerSelection] = useState('');
   const [computerSelection, setComputerSelection] = useState('');
-  const [isWinner, setWinner] = useState(false);
+  const [isWinner, setWinner] = useState('');
 
   const [gameOn, setGameOn] = useState(false);
   const [isModalVisible, setModal] = useState(false);
@@ -43,25 +43,27 @@ function App() {
     if ((player === 'rock' && computer === 'scissors')
       || (player === 'scissors' && computer === 'paper')
       || (player === 'paper' && computer === 'rock')) {
-      setWinner(true); // player wins
+      setWinner('player'); // player wins
       setScore(prevScore => {
         return prevScore + 1;
       })
     } else if (player !== computer) { //if not the above and not equal, then comp wins
-      console.log('comp wins!')
+      console.log('computer');
+      setWinner('computer');
       setScore(prevScore => {
         return prevScore - 1;
       })
     } else { //player === computer or both are ''
-        console.log('nothing changes');
-        setScore(prevScore => {
-          return prevScore;
-        })
+      console.log('nothing changes');
+      setWinner('draw');
+      setScore(prevScore => {
+        return prevScore;
+      })
     }
   }
 
   const pickHand = hand => {
-    if(hand === 'scissors') {
+    if (hand === 'scissors') {
       return <Scissors />
     } else if (hand === 'rock') {
       return <Rock />;
@@ -70,48 +72,73 @@ function App() {
     }
   }
 
-
   function resetHands() {
     setPlayerSelection('');
     setComputerSelection('')
-    isWinner && setWinner(false);
+    setWinner('');
     setGameOn(false);
+  }
+
+  const showOutcome = () => {
+    if (isWinner === 'player') {
+      return 'You win';
+    } else if (isWinner === 'computer') {
+      return 'You lose';
+    } else {
+      return "It's a draw";
+    }
+
   }
 
 
   return (
     <React.Fragment>
       <Header score={score} />
-      <Modal onClick={closeModal} style={{ display: isModalVisible ? 'block' : 'none' }} />
+      <main className='main-container'>
+        <Modal onClick={closeModal} style={{ display: isModalVisible ? 'block' : 'none' }} />
 
-      {
-        !gameOn ?
-          <section className='playground'>
-            <div className='paper-scissors-div'>
-              <Hand type='paper' onClick={playRound} src={<Paper />} />
-              <Hand type='scissors' onClick={playRound} src={<Scissors />} />
-            </div>
-            <div className='triangle'>
-            <Triangle title='triangle' />
-            </div>
-            <div className='rock-div'>
-              <Hand type='rock' onClick={playRound} src={<Rock />} />
-            </div>
-          </section>
-          :
-          <section>
-            <h1>You Picked</h1>
-            <Hand type={playerSelection} src={pickHand(playerSelection)} />
-            <h1>The house picked</h1>
-            <Hand type={computerSelection} src={pickHand(computerSelection)}/>
-            <h1>{
-              isWinner ? 'You win' : 'You lose'
-            }</h1>
-            <button onClick={resetHands}>Play again</button>
-          </section>
+        {
+          !gameOn ?
+            <section className='playground'>
+              <div className='paper-scissors-div'>
+                <Hand type='paper' onClick={playRound} src={<Paper />} />
+                <Hand type='scissors' onClick={playRound} src={<Scissors />} />
+              </div>
+              <div className='triangle'>
+                <Triangle title='triangle' />
+              </div>
+              <div className='rock-div'>
+                <Hand type='rock' onClick={playRound} src={<Rock />} />
+              </div>
+            </section>
 
-      }
-      <Button text='Rules' onClick={showModal} />
+            :
+
+            <section className='hand-selections'>
+              <div className='player-selection'>
+                <h1>You Picked</h1>
+                <Hand type={playerSelection} src={pickHand(playerSelection)} />
+              </div>
+
+              <div className='outcome'>
+                <h1 className='outcome-heading'>{
+                  showOutcome()
+                }</h1>
+                <Button onClick={resetHands} text='Play again'></Button>
+              </div>
+
+              <div className='house-selection'>
+                <h1>The house picked</h1>
+                <Hand type={computerSelection} src={pickHand(computerSelection)} />
+              </div>
+            </section>
+        }
+      </main>
+
+      <footer>
+        <Button text='Rules' onClick={showModal} />
+      </footer>
+
     </React.Fragment>
   )
 }
