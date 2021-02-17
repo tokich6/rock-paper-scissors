@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect} from 'react';
 import Header from './components/Header';
 import Hand from './components/Hand';
 import Modal from './components/Modal'
@@ -10,14 +10,14 @@ import { ReactComponent as Scissors } from './assets/images/icon-scissors.svg';
 
 
 function App() {
-
-  const [score, setScore] = useState(0);
+  const [score, setScore] = useState(sessionStorage.getItem('localStorageScore') || 0)
   const [playerSelection, setPlayerSelection] = useState('');
   const [computerSelection, setComputerSelection] = useState('');
   const [isWinner, setWinner] = useState('');
 
   const [gameOn, setGameOn] = useState(false);
   const [isModalVisible, setModal] = useState(false);
+
 
   const computerOptions = ['rock', 'paper', 'scissors'];
 
@@ -35,10 +35,7 @@ function App() {
     setGameOn(true);
   }
 
-  useEffect(() => {
-    updateScore(playerSelection, computerSelection);
-  }, [playerSelection, computerSelection]);
-
+  
   function updateScore(player, computer) {
     if ((player === 'rock' && computer === 'scissors')
       || (player === 'scissors' && computer === 'paper')
@@ -62,6 +59,15 @@ function App() {
     }
   }
 
+  useEffect(() => {
+    sessionStorage.setItem('localStorageScore', score)
+  }, [score]);
+
+  useEffect(() => {
+    updateScore(playerSelection, computerSelection);
+  }, [playerSelection, computerSelection]);
+
+
   const pickHand = hand => {
     if (hand === 'scissors') {
       return <Scissors />
@@ -72,13 +78,6 @@ function App() {
     }
   }
 
-  function resetHands() {
-    setPlayerSelection('');
-    setComputerSelection('')
-    setWinner('');
-    setGameOn(false);
-  }
-
   const showOutcome = () => {
     if (isWinner === 'player') {
       return 'You win';
@@ -87,7 +86,18 @@ function App() {
     } else {
       return "It's a draw";
     }
+  }
 
+  const resetHands = () => {
+    setPlayerSelection('');
+    setComputerSelection('')
+    setWinner('');
+    setGameOn(false);
+  }
+
+  const resetScore = () => {
+    sessionStorage.setItem('localStorageScore', 0);
+    setScore(0);
   }
 
 
@@ -136,7 +146,9 @@ function App() {
       </main>
 
       <footer>
+        <Button text='Reset score' onClick={resetScore} />
         <Button text='Rules' onClick={showModal} />
+
       </footer>
 
     </React.Fragment>
