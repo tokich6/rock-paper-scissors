@@ -167,6 +167,10 @@ footer .btn:hover {
   letter-spacing: .1rem;
   font-weight: 300;
 }
+.player-selection button, .house-selection button {
+  cursor: default;
+}
+
 footer {
   position: fixed;
   bottom: 1rem;

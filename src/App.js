@@ -1,4 +1,4 @@
-import React, { useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import Header from './components/Header';
 import Hand from './components/Hand';
 import Modal from './components/Modal'
@@ -10,20 +10,30 @@ import { ReactComponent as Scissors } from './assets/images/icon-scissors.svg';
 
 
 function App() {
+
   const [score, setScore] = useState(sessionStorage.getItem('localStorageScore') || 0)
   const [playerSelection, setPlayerSelection] = useState('');
   const [computerSelection, setComputerSelection] = useState('');
   const [isWinner, setWinner] = useState('');
 
   const [gameOn, setGameOn] = useState(false);
+  const [showOutcome, setShowOutcome] = useState(false);
   const [isModalVisible, setModal] = useState(false);
 
+  useEffect(() => {
+    sessionStorage.setItem('localStorageScore', score);
+  }, [score]);
 
-  const computerOptions = ['rock', 'paper', 'scissors'];
+  useEffect(() => {
+    setTimeout(() => {
+      return updateScore(playerSelection, computerSelection);
+    }, 1000)
+  }, [playerSelection, computerSelection]);
 
   const showModal = () => setModal(true);
   const closeModal = () => setModal(false);
 
+  const computerOptions = ['rock', 'paper', 'scissors'];
   const getComputerSelection = () => {
     let random = computerOptions[Math.floor(Math.random() * computerOptions.length)];
     return setComputerSelection(random);
@@ -33,22 +43,25 @@ function App() {
     setPlayerSelection(hand)
     getComputerSelection();
     setGameOn(true);
+    setTimeout(() => {
+      return setShowOutcome(true)
+    }, 1000)
   }
 
-  
+
   function updateScore(player, computer) {
     if ((player === 'rock' && computer === 'scissors')
       || (player === 'scissors' && computer === 'paper')
       || (player === 'paper' && computer === 'rock')) {
       setWinner('player'); // player wins
       setScore(prevScore => {
-        return prevScore + 1;
+        return ++prevScore;
       })
     } else if (player !== computer) { //if not the above and not equal, then comp wins
       console.log('computer');
       setWinner('computer');
       setScore(prevScore => {
-        return prevScore - 1;
+        return --prevScore;
       })
     } else { //player === computer or both are ''
       console.log('nothing changes');
@@ -58,15 +71,6 @@ function App() {
       })
     }
   }
-
-  useEffect(() => {
-    sessionStorage.setItem('localStorageScore', score)
-  }, [score]);
-
-  useEffect(() => {
-    updateScore(playerSelection, computerSelection);
-  }, [playerSelection, computerSelection]);
-
 
   const pickHand = hand => {
     if (hand === 'scissors') {
@@ -78,7 +82,7 @@ function App() {
     }
   }
 
-  const showOutcome = () => {
+  const getWinner = () => {
     if (isWinner === 'player') {
       return 'You win';
     } else if (isWinner === 'computer') {
@@ -92,6 +96,7 @@ function App() {
     setPlayerSelection('');
     setComputerSelection('')
     setWinner('');
+    setShowOutcome(false);
     setGameOn(false);
   }
 
@@ -123,25 +128,27 @@ function App() {
             </section>
 
             :
-
             <section className='hand-selections'>
               <div className='player-selection'>
                 <h1>You Picked</h1>
-                <Hand type={playerSelection} src={pickHand(playerSelection)} />
+                <Hand type={playerSelection} src={pickHand(playerSelection)} disabled />
               </div>
-
-              <div className='outcome'>
-                <h1 className='outcome-heading'>{
-                  showOutcome()
-                }</h1>
-                <Button onClick={resetHands} text='Play again'></Button>
-              </div>
+              {
+                showOutcome &&
+                <div className='outcome'>
+                  <h1 className='outcome-heading'>{
+                    getWinner()
+                  }</h1>
+                  <Button onClick={resetHands} text='Play again'></Button>
+                </div>
+              }
 
               <div className='house-selection'>
                 <h1>The house picked</h1>
-                <Hand type={computerSelection} src={pickHand(computerSelection)} />
+                <Hand type={computerSelection} src={pickHand(computerSelection)} disabled />
               </div>
             </section>
+
         }
       </main>
 

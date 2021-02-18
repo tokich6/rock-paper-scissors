@@ -6,7 +6,7 @@ function Hand(props) {
 
   return (
     <React.Fragment>
-      <button className={handStyle} onClick={() => props.onClick(props.type)}>
+      <button className={handStyle} onClick={() => props.onClick(props.type)} disabled={props.disabled}>
         {props.src}
       </button>
     </React.Fragment>
