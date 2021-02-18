@@ -48,7 +48,6 @@ function App() {
     }, 1000)
   }
 
-
   function updateScore(player, computer) {
     if ((player === 'rock' && computer === 'scissors')
       || (player === 'scissors' && computer === 'paper')
@@ -155,7 +154,6 @@ function App() {
       <footer>
         <Button text='Reset score' onClick={resetScore} />
         <Button text='Rules' onClick={showModal} />
-
       </footer>
 
     </React.Fragment>

@@ -7,9 +7,12 @@ html {
   font-family: "Barlow Semi Condensed", sans-serif;
 }
 body {
-  background: hsl(237, 49%, 15%);
+  /* hsl(214, 47%, 23%) to hsl(237, 49%, 15%) */
+  /* background: hsl(237, 49%, 15%); */
+  background: radial-gradient(circle at top,hsl(214, 47%, 23%), hsl(237, 49%, 15%));
   padding: 2rem;
   color: aliceblue;
+  height: 100vh;
 }
 .main-container {
   display: flex;
@@ -94,8 +97,8 @@ body {
   cursor: pointer;
 }
 .paper {
-  /* border-image: radial-gradient( hsl(230, 89%, 62%), hsl(230, 89%, 65%)); */
   border-color: hsl(230, 89%, 62%);
+  /* border-image: radial-gradient( hsl(230, 89%, 62%), hsl(230, 89%, 65%)); */
   margin-left: -4rem;
 }
 .rock {
@@ -128,18 +131,6 @@ body {
   text-transform: uppercase;
   outline: none;
   cursor: pointer;
-}
-
-footer .btn {
-  color: aliceblue;
-  font-size: 0.8rem;
-  background: none;
-}
-
-footer .btn:hover {
-  background: aliceblue;
-  color: hsl(237, 49%, 15%);
-  transition: 0.4s;
 }
 .outcome .btn {
   color: hsl(237, 49%, 15%);
@@ -180,5 +171,14 @@ footer {
   justify-content: space-between;
 }
 footer .btn {
+  color: aliceblue;
+  font-size: 0.8rem;
+  background: none;
   margin: 0 1rem;
+}
+
+footer .btn:hover {
+  background: aliceblue;
+  color: hsl(237, 49%, 15%);
+  transition: 0.4s;
 }
