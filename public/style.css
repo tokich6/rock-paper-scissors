@@ -23,7 +23,7 @@ body {
 }
 .heading {
   border-radius: 1rem;
-  border: 2px solid hsl(217, 16%, 45%);
+  border: 0.2rem solid hsl(217, 16%, 45%);
   padding: 10px;
   width: 50%;
   margin: 0 auto;
@@ -86,28 +86,38 @@ body {
 
 .hand {
   background: aliceblue;
-  width: 10rem;
-  height: 10rem;
+  width: 12rem;
+  height: 12rem;
   border-radius: 50%;
   display: flex;
-  padding: 2rem;
+  padding: 1.5rem;
   border: 1rem solid;
   align-items: center;
+  justify-content: center;
   outline: none;
   cursor: pointer;
+  border: transparent;
+  background-origin: border-box;
+  background-clip: content-box, border-box;
 }
 .paper {
-  border-color: hsl(230, 89%, 62%);
+  /* border-color:radial-gradient(hsl(230, 89%, 62%), hsl(230, 89%, 65%)); */
   /* border-image: radial-gradient( hsl(230, 89%, 62%), hsl(230, 89%, 65%)); */
   margin-left: -4rem;
+  background-image: linear-gradient(aliceblue, white), 
+                    radial-gradient(at 50% bottom, hsl(230, 89%, 65%), hsl(230, 89%, 62%));
 }
 .rock {
   /* border-image: radial-gradient(hsl(349, 71%, 52%), hsl(349, 70%, 56%)); */
-  border-color: hsl(349, 71%, 52%);
+  /* border-color: hsl(349, 71%, 52%); */
+  background-image: linear-gradient(aliceblue, white), 
+                    radial-gradient(at 50% bottom, hsl(349, 70%, 56%), hsl(349, 71%, 52%));
 }
 .scissors {
   /* border-image: radial-gradient(hsl(39, 89%, 49%), hsl(40, 84%, 53%)); */
-  border-color: hsl(39, 89%, 49%);
+  /* border-color: hsl(39, 89%, 49%); */
+  background-image: linear-gradient(aliceblue, white), 
+  radial-gradient(at 50% bottom, hsl(40, 84%, 53%), hsl(39, 89%, 49%));
   margin-left: 6rem;
 }
 .playground {
