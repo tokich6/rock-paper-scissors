@@ -9,7 +9,11 @@ html {
 body {
   /* hsl(214, 47%, 23%) to hsl(237, 49%, 15%) */
   /* background: hsl(237, 49%, 15%); */
-  background: radial-gradient(circle at top,hsl(214, 47%, 23%), hsl(237, 49%, 15%));
+  background: radial-gradient(
+    circle at top,
+    hsl(214, 47%, 23%),
+    hsl(237, 49%, 15%)
+  );
   padding: 2rem;
   color: aliceblue;
   height: 100vh;
@@ -99,25 +103,39 @@ body {
   border: transparent;
   background-origin: border-box;
   background-clip: content-box, border-box;
+  position: relative;
 }
 .paper {
   /* border-color:radial-gradient(hsl(230, 89%, 62%), hsl(230, 89%, 65%)); */
   /* border-image: radial-gradient( hsl(230, 89%, 62%), hsl(230, 89%, 65%)); */
   margin-left: -4rem;
   background-image: linear-gradient(aliceblue, white), 
-                    radial-gradient(at 50% bottom, hsl(230, 89%, 65%), hsl(230, 89%, 62%));
+  radial-gradient(circle at 50% 0%, hsl(230, 89%, 65%), hsl(230, 89%, 67%) 10%, hsl(230, 89%, 62%) 80%, hsl(230, 89%, 59%) 100%);
+}
+.hand::after {
+  content: "";
+    width: 200%;
+    height: 80%;
+    position: absolute;
+    /* border-radius: 50%; */
+    top: 40%;
+    background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8) 14%, rgba(255, 255, 255, 0) 24%);
+    /* transform: translateX(-80px) translateY(-90px) skewX(
+-20deg
+); */
+    /* filter: blur(10px); */
 }
 .rock {
   /* border-image: radial-gradient(hsl(349, 71%, 52%), hsl(349, 70%, 56%)); */
   /* border-color: hsl(349, 71%, 52%); */
-  background-image: linear-gradient(aliceblue, white), 
-                    radial-gradient(at 50% bottom, hsl(349, 70%, 56%), hsl(349, 71%, 52%));
+  background-image: linear-gradient(aliceblue, white),
+    radial-gradient(circle at 50% 0%, hsl(349, 70%, 56%), hsl(349, 70%, 59%) 10%, hsl(349, 71%, 52%) 80%, hsl(349, 71%, 48%) 100%);
 }
 .scissors {
   /* border-image: radial-gradient(hsl(39, 89%, 49%), hsl(40, 84%, 53%)); */
   /* border-color: hsl(39, 89%, 49%); */
-  background-image: linear-gradient(aliceblue, white), 
-  radial-gradient(at 50% bottom, hsl(40, 84%, 53%), hsl(39, 89%, 49%));
+  background-image: linear-gradient(aliceblue, white),
+    radial-gradient(circle at 50% 0%, hsl(40, 84%, 53%), hsl(40, 84%, 55%) 10%, hsl(39, 89%, 49%) 80%, hsl(39, 89%, 46%) 100%);
   margin-left: 6rem;
 }
 .playground {
@@ -161,14 +179,16 @@ body {
 .outcome-heading {
   text-transform: uppercase;
   font-size: 3rem;
-  letter-spacing: .1rem;
+  letter-spacing: 0.1rem;
 }
-.player-selection h1, .house-selection h1 {
+.player-selection h1,
+.house-selection h1 {
   text-transform: uppercase;
-  letter-spacing: .1rem;
+  letter-spacing: 0.1rem;
   font-weight: 300;
 }
-.player-selection button, .house-selection button {
+.player-selection button,
+.house-selection button {
   cursor: default;
 }
 
