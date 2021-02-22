@@ -7,13 +7,7 @@ html {
   font-family: "Barlow Semi Condensed", sans-serif;
 }
 body {
-  /* hsl(214, 47%, 23%) to hsl(237, 49%, 15%) */
-  /* background: hsl(237, 49%, 15%); */
-  background: radial-gradient(
-    circle at top,
-    hsl(214, 47%, 23%),
-    hsl(237, 49%, 15%)
-  );
+  background:repeating-radial-gradient(circle at top, hsl(214, 47%, 23%),hsl(237, 49%, 15%));
   padding: 2rem;
   color: aliceblue;
   height: 100vh;
@@ -21,6 +15,7 @@ body {
 .main-container {
   display: flex;
   justify-content: center;
+  /* align-items: center; */
   height: 60vh;
   width: 90%;
   margin: 0 auto;
@@ -92,51 +87,64 @@ body {
   background: aliceblue;
   width: 12rem;
   height: 12rem;
-  border-radius: 50%;
-  display: flex;
   padding: 1.5rem;
+  border-radius: 50%;
   border: 1rem solid;
-  align-items: center;
-  justify-content: center;
+  border: transparent;
   outline: none;
   cursor: pointer;
-  border: transparent;
   background-origin: border-box;
   background-clip: content-box, border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   position: relative;
+  /* z-index: 2; */
 }
+
 .paper {
-  /* border-color:radial-gradient(hsl(230, 89%, 62%), hsl(230, 89%, 65%)); */
-  /* border-image: radial-gradient( hsl(230, 89%, 62%), hsl(230, 89%, 65%)); */
   margin-left: -4rem;
-  background-image: linear-gradient(aliceblue, white), 
+  background-image: linear-gradient(180deg, rgba(0,0,0,0.4), aliceblue), 
   radial-gradient(circle at 50% 0%, hsl(230, 89%, 65%), hsl(230, 89%, 67%) 10%, hsl(230, 89%, 62%) 80%, hsl(230, 89%, 59%) 100%);
 }
-.hand::after {
+.paper::after {
   content: "";
-    width: 200%;
-    height: 80%;
-    position: absolute;
-    /* border-radius: 50%; */
-    top: 40%;
-    background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8) 14%, rgba(255, 255, 255, 0) 24%);
-    /* transform: translateX(-80px) translateY(-90px) skewX(
--20deg
-); */
-    /* filter: blur(10px); */
+  height: 12rem;
+  width: 12rem;
+  background-image: linear-gradient(hsl(230, 89%, 62%) 80%, hsl(230, 89%, 55%));
+  border-radius: 50%;
+  position: absolute;
+  bottom: -4%;
+  z-index: -1;
 }
 .rock {
-  /* border-image: radial-gradient(hsl(349, 71%, 52%), hsl(349, 70%, 56%)); */
-  /* border-color: hsl(349, 71%, 52%); */
-  background-image: linear-gradient(aliceblue, white),
+  background-image: linear-gradient(180deg, rgba(0,0,0,0.4), aliceblue),
     radial-gradient(circle at 50% 0%, hsl(349, 70%, 56%), hsl(349, 70%, 59%) 10%, hsl(349, 71%, 52%) 80%, hsl(349, 71%, 48%) 100%);
 }
+.rock::after {
+  content: "";
+  height: 12rem;
+  width: 12rem;
+  background-image: linear-gradient(hsl(349, 71%, 52%),hsl(349, 71%, 40%));
+  border-radius: 50%;
+  position: absolute;
+  bottom: -4%;
+  z-index: -1;
+}
 .scissors {
-  /* border-image: radial-gradient(hsl(39, 89%, 49%), hsl(40, 84%, 53%)); */
-  /* border-color: hsl(39, 89%, 49%); */
-  background-image: linear-gradient(aliceblue, white),
+  background-image: linear-gradient(rgba(0,0,0,0.4), aliceblue),
     radial-gradient(circle at 50% 0%, hsl(40, 84%, 53%), hsl(40, 84%, 55%) 10%, hsl(39, 89%, 49%) 80%, hsl(39, 89%, 46%) 100%);
   margin-left: 6rem;
+}
+.scissors::after {
+  content: "";
+  height: 12rem;
+  width: 12rem;
+  background-image: linear-gradient(hsl(39, 89%, 49%) 80%, hsl(39, 89%, 38%));
+  border-radius: 50%;
+  position: absolute;
+  bottom: -4%;
+  z-index: -1;
 }
 .playground {
   margin-top: 5rem;
