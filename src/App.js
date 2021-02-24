@@ -128,8 +128,9 @@ function App() {
 
             :
             <section className='hand-selections'>
+            
               <div className='player-selection'>
-                <h1>You Picked</h1>
+              <h1>You Picked</h1>
                 <Hand type={playerSelection} src={pickHand(playerSelection)} disabled />
               </div>
               {
@@ -141,9 +142,9 @@ function App() {
                   <Button onClick={resetHands} text='Play again'></Button>
                 </div>
               }
-
+             
               <div className='house-selection'>
-                <h1>The house picked</h1>
+              <h1>The house picked</h1>
                 <Hand type={computerSelection} src={pickHand(computerSelection)} disabled />
               </div>
             </section>
