@@ -103,7 +103,20 @@ function App() {
     sessionStorage.setItem('localStorageScore', 0);
     setScore(0);
   }
-
+  const playerCircleBackground = () => {
+    let className = ''
+    if (isWinner === 'player') {
+      className += 'winner'
+    }
+    return className;
+  }
+const compCircleBackground=() => {
+  let className='';
+  if (isWinner === 'computer') {
+    className += 'winner'
+  }
+  return className;
+}
 
   return (
     <React.Fragment>
@@ -128,10 +141,12 @@ function App() {
 
             :
             <section className='hand-selections'>
-            
+
               <div className='player-selection'>
-              <h1>You Picked</h1>
-                <Hand type={playerSelection} src={pickHand(playerSelection)} disabled />
+                <h1>You Picked</h1>
+                <figure className={playerCircleBackground()}>
+                  <Hand type={playerSelection} src={pickHand(playerSelection)} disabled />
+                </figure>
               </div>
               {
                 showOutcome &&
@@ -142,10 +157,12 @@ function App() {
                   <Button onClick={resetHands} text='Play again'></Button>
                 </div>
               }
-             
+
               <div className='house-selection'>
-              <h1>The house picked</h1>
+                <h1>The house picked</h1>
+                <figure className={compCircleBackground()}>
                 <Hand type={computerSelection} src={pickHand(computerSelection)} disabled />
+                </figure>
               </div>
             </section>
 
