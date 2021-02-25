@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import Header from './components/Header';
-import Hand from './components/Hand';
-import Modal from './components/Modal'
-import Button from './components/Button';
-import { ReactComponent as Triangle } from './assets/images/bg-triangle.svg';
+import './App.css';
+import Header from './components/Header/Header';
+import Hand from './components/Hand/Hand';
+import Modal from './components/Modal/Modal'
+import Button from './components/Button/Button';
 import { ReactComponent as Paper } from './assets/images/icon-paper.svg';
 import { ReactComponent as Rock } from './assets/images/icon-rock.svg';
 import { ReactComponent as Scissors } from './assets/images/icon-scissors.svg';
+
 
 
 function App() {
@@ -121,22 +122,22 @@ const compCircleBackground=() => {
   return (
     <React.Fragment>
       <Header score={score} />
-      <main className='main-container'>
+      {/* <main className='main-container'> */}
         <Modal onClick={closeModal} style={{ display: isModalVisible ? 'block' : 'none' }} />
 
         {
           !gameOn ?
             <section className='playground'>
-              <div className='paper-scissors-div'>
+              {/* <span className='paper-scissors-div'> */}
                 <Hand type='paper' onClick={playRound} src={<Paper />} />
                 <Hand type='scissors' onClick={playRound} src={<Scissors />} />
-              </div>
-              <div className='triangle'>
+              {/* </span> */}
+              {/* <div className='triangle'>
                 <Triangle title='triangle' />
-              </div>
-              <div className='rock-div'>
+              </div> */}
+              {/* <div className='rock-div'> */}
                 <Hand type='rock' onClick={playRound} src={<Rock />} />
-              </div>
+              {/* </div> */}
             </section>
 
             :
@@ -167,7 +168,7 @@ const compCircleBackground=() => {
             </section>
 
         }
-      </main>
+      {/* </main> */}
 
       <footer>
         <Button text='Reset score' onClick={resetScore} />

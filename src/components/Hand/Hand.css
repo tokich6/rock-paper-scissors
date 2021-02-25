@@ -1,0 +1,49 @@
+.hand {
+  width: 12rem;
+  height: 12rem;
+  padding: 1.5rem;
+  border-radius: 50%;
+  border: 1rem solid;
+  border: transparent;
+  outline: none;
+  cursor: pointer;
+  background-origin: border-box;
+  background-clip: content-box, border-box;
+  margin: 2rem;
+  box-shadow: inset 0 -6px rgb(0 0 0 / 20%), 0 ;
+}
+
+
+.paper {
+  background-image: linear-gradient(white, white),
+    radial-gradient(
+      circle at 50% 0%,
+      hsl(230, 89%, 65%),
+      hsl(230, 89%, 67%) 10%,
+      hsl(230, 89%, 62%) 80%,
+      hsl(230, 89%, 59%) 100%
+    );
+  box-shadow: inset 0 6px rgb(0 0 0 / 20%), 0 8px rgb(86 113 245 / 70%);
+}
+
+.rock {
+  background-image: linear-gradient(white, aliceblue),
+    radial-gradient(
+      circle at 50% 0%,
+      hsl(349, 70%, 56%),
+      hsl(349, 70%, 59%) 10%,
+      hsl(349, 71%, 52%) 80%,
+      hsl(349, 71%, 48%) 100%
+    );
+}
+
+.scissors {
+  background-image: linear-gradient(white, aliceblue),
+    radial-gradient(
+      circle at 50% 0%,
+      hsl(40, 84%, 53%),
+      hsl(40, 84%, 55%) 10%,
+      hsl(39, 89%, 49%) 80%,
+      hsl(39, 89%, 46%) 100%
+    );
+}

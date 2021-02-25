@@ -1,5 +1,6 @@
-import Score from './Score';
-import { ReactComponent as Logo } from '../assets/images/logo.svg';
+import './Header.css';
+import Score from '../Score/Score';
+import { ReactComponent as Logo } from '../../assets/images/logo.svg';
 
 function Header(props) {
   return (

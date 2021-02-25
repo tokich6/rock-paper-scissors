@@ -1,0 +1,40 @@
+.modal-container {
+  width: 50%;
+  height: auto;
+  background: aliceblue;
+  color: black;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 3;
+  padding: 2rem;
+  border-radius: 0.5rem;
+  transition: 0.4s;
+}
+@media (min-width: 1199px) {
+  .modal-container {
+    width: 30%;
+  }
+  .heading {
+    width: 60%;
+  }
+}
+.modal-heading {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+  color: hsl(237, 49%, 15%);
+}
+.modal-heading h1 {
+  text-transform: uppercase;
+}
+.close-icon {
+  text-align: right;
+}
+.close-icon :hover {
+  cursor: pointer;
+}
+.image-rules {
+  text-align: center;
+}

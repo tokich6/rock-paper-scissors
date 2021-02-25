@@ -1,0 +1,8 @@
+.btn {
+  border: 1px solid aliceblue;
+  border-radius: 0.5rem;
+  padding: 0.6rem 1.7rem;
+  text-transform: uppercase;
+  outline: none;
+  cursor: pointer;
+}

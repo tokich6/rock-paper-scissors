@@ -1,5 +1,6 @@
-import { ReactComponent as CloseIcon } from '../assets/images/icon-close.svg';
-import { ReactComponent as Rules } from '../assets/images/image-rules.svg';
+import './Modal.css';
+import { ReactComponent as CloseIcon } from '../../assets/images/icon-close.svg';
+import { ReactComponent as Rules } from '../../assets/images/image-rules.svg';
 
 
 function Modal(props) {

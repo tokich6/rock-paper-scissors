@@ -1,0 +1,124 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-family: "Barlow Semi Condensed", sans-serif;
+  height: 100%;
+}
+body {
+  background: repeating-radial-gradient(
+    circle at top,
+    hsl(214, 47%, 23%),
+    hsl(237, 49%, 15%)
+  );
+  background-size: cover;
+  padding: 2rem;
+  color: aliceblue;
+}
+/* .main-container {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  min-height: 40%;
+} */
+
+.playground {
+  width: 35rem;
+  height: 30rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  background-image: url(./assets/images/bg-triangle.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.hand-selections {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.outcome {
+  text-align: center;
+  align-self: center;
+}
+.outcome .btn {
+  color: hsl(237, 49%, 15%);
+  padding: 0.6rem 2.2rem;
+  letter-spacing: 0.1rem;
+  font-weight: 600;
+}
+.outcome .btn:hover {
+  color: hsl(349, 71%, 52%);
+}
+.outcome-heading {
+  text-transform: uppercase;
+  font-size: 3rem;
+  letter-spacing: 0.1rem;
+  margin-bottom: 0.5rem;
+}
+.player-selection,
+.house-selection {
+  align-self: self-start;
+  justify-self: center;
+}
+.player-selection h1,
+.house-selection h1 {
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  font-weight: 300;
+  text-align: center;
+  margin-bottom: 2rem;
+  position: relative;
+  z-index: 2;
+}
+
+.player-selection button,
+.house-selection button {
+  cursor: default;
+}
+
+.winner {
+  width: 25rem;
+  height: 25rem;
+  border-radius: 50%;
+  outline: none;
+  background: repeating-radial-gradient(
+    hsl(237, 49%, 15%),
+    hsl(214, 47%, 23%) 25%
+  );
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: -5.5rem;
+}
+
+footer {
+  position: fixed;
+  bottom: 1rem;
+  right: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+footer .btn {
+  color: aliceblue;
+  font-size: 0.9rem;
+  background: none;
+  margin: 0 1rem;
+}
+
+footer .btn:hover {
+  background: aliceblue;
+  color: hsl(237, 49%, 15%);
+  transition: 0.4s;
+}
