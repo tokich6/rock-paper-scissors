@@ -6,27 +6,12 @@
 
 html {
   font-family: "Barlow Semi Condensed", sans-serif;
-  height: 100%;
 }
+
 body {
-  background: repeating-radial-gradient(
-    circle at top,
-    hsl(214, 47%, 23%),
-    hsl(237, 49%, 15%)
-  );
-  background-size: cover;
+  background: radial-gradient(circle at top, hsl(214, 47%, 23%), hsl(237, 49%, 15%)) fixed;
   color: aliceblue;
 }
-/* .main-container {
-  display: flex;
-  justify-content: center;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 90%;
-  min-height: 40%;
-} */
 
 .playground {
   width: 35rem;
@@ -40,7 +25,12 @@ body {
   background-repeat: no-repeat;
   background-position: center;
 }
-
+@media (max-width: 563px) {
+  .playground {
+    width: 24rem;
+    height: 27rem;
+  }
+}
 .hand-selections {
   display: flex;
   align-items: center;

@@ -111,64 +111,55 @@ function App() {
     }
     return className;
   }
-const compCircleBackground=() => {
-  let className='';
-  if (isWinner === 'computer') {
-    className += 'winner'
+  const compCircleBackground = () => {
+    let className = '';
+    if (isWinner === 'computer') {
+      className += 'winner'
+    }
+    return className;
   }
-  return className;
-}
 
   return (
     <React.Fragment>
       <Header score={score} />
-      {/* <main className='main-container'> */}
-        <Modal onClick={closeModal} style={{ display: isModalVisible ? 'block' : 'none' }} />
+      <Modal onClick={closeModal} style={{ display: isModalVisible ? 'block' : 'none' }} />
 
-        {
-          !gameOn ?
-            <section className='playground'>
-              {/* <span className='paper-scissors-div'> */}
-                <Hand type='paper' onClick={playRound} src={paper} />
-                <Hand type='scissors' onClick={playRound} src={scissors} />
-              {/* </span> */}
-              {/* <div className='triangle'>
-                <Triangle title='triangle' />
-              </div> */}
-              {/* <div className='rock-div'> */}
-                <Hand type='rock' onClick={playRound} src={rock} />
-              {/* </div> */}
-            </section>
+      {
+        !gameOn ?
+          <section className='playground'>
+            <Hand type='paper' onClick={playRound} src={paper} />
+            <Hand type='scissors' onClick={playRound} src={scissors} />
+            <Hand type='rock' onClick={playRound} src={rock} />
+          </section>
 
-            :
-            <section className='hand-selections'>
+          :
+          <section className='hand-selections'>
 
-              <div className='player-selection'>
-                <h1>You Picked</h1>
-                <figure className={playerCircleBackground()}>
-                  <Hand type={playerSelection} src={pickHand(playerSelection)} disabled />
-                </figure>
+            <div className='player-selection'>
+              <h1>You Picked</h1>
+              <figure className={playerCircleBackground()}>
+                <Hand type={playerSelection} src={pickHand(playerSelection)} disabled />
+              </figure>
+            </div>
+            {
+              showOutcome &&
+              <div className='outcome'>
+                <h1 className='outcome-heading'>{
+                  getWinner()
+                }</h1>
+                <Button onClick={resetHands} text='Play again'></Button>
               </div>
-              {
-                showOutcome &&
-                <div className='outcome'>
-                  <h1 className='outcome-heading'>{
-                    getWinner()
-                  }</h1>
-                  <Button onClick={resetHands} text='Play again'></Button>
-                </div>
-              }
+            }
 
-              <div className='house-selection'>
-                <h1>The house picked</h1>
-                <figure className={compCircleBackground()}>
+            <div className='house-selection'>
+              <h1>The house picked</h1>
+              <figure className={compCircleBackground()}>
                 <Hand type={computerSelection} src={pickHand(computerSelection)} disabled />
-                </figure>
-              </div>
-            </section>
+              </figure>
+            </div>
+          </section>
 
-        }
-      {/* </main> */}
+      }
 
       <footer>
         <Button text='Reset score' onClick={resetScore} />

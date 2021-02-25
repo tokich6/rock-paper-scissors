@@ -12,14 +12,7 @@
   border-radius: 0.5rem;
   transition: 0.4s;
 }
-@media (min-width: 1199px) {
-  .modal-container {
-    width: 30%;
-  }
-  .heading {
-    width: 60%;
-  }
-}
+
 .modal-heading {
   display: flex;
   justify-content: space-between;
@@ -37,4 +30,20 @@
 }
 .image-rules {
   text-align: center;
+}
+@media (min-width: 1199px) {
+  .modal-container {
+    width: 30%;
+  }
+  .heading {
+    width: 60%;
+  }
+}
+
+@media (max-width: 749px) {
+  .modal-container {
+   width: 100%;
+   height: 100%;
+   border-radius: 0;
+  }
 }

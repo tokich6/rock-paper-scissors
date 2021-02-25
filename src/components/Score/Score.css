@@ -1,7 +1,6 @@
 .score {
   background: aliceblue;
-  width: 120px;
-  height: 100px;
+  width: 7rem;
   padding: 1rem;
   border-radius: 0.5rem;
   text-align: center;
@@ -9,11 +8,19 @@
 .score p:first-child {
   color: hsl(229, 64%, 46%);
   text-transform: uppercase;
-  font-size: small;
+  font-size: medium;
 }
 
 .score p:nth-child(2) {
   color: hsl(229, 25%, 31%);
   font-size: 3rem;
   font-weight: bold;
+}
+@media (max-width: 563px) {
+  .score {
+    width: 6rem;
+  }
+  .score p:first-child {
+    font-size: small;
+  }
 }

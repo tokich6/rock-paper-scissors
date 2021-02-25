@@ -17,7 +17,7 @@
   border-radius: 50%;
   box-shadow: inset 0 8px rgba(0, 0, 0, 0.15);
 }
-img {
+.img-wrapper img {
   padding: 2.5rem;
 }
 .paper {
@@ -30,4 +30,20 @@ img {
 
 .scissors {
   background: linear-gradient(to top, hsl(39, 89%, 49%), hsl(40, 84%, 53%));
+}
+
+@media (max-width: 563px) {
+  .hand {
+    width: 9rem;
+    height: 9rem;
+    margin: 1rem;
+  }
+  .hand .img-wrapper {
+    width: 7.5rem;
+    height: 7.5rem;
+  }
+  .img-wrapper img {
+    padding: 2rem;
+  }
+
 }
