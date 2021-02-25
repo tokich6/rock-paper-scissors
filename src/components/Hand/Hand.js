@@ -7,10 +7,12 @@ function Hand(props) {
 
   return (
     <React.Fragment>
-    <button className={handStyle} onClick={() => props.onClick(props.type)} disabled={props.disabled}>
-        {props.src}
+      <button className={handStyle} onClick={() => props.onClick(props.type)} disabled={props.disabled}>
+        <span className='img-wrapper'>
+          <img src={props.src} alt={props.type} />
+        </span>
       </button>
-      
+
     </React.Fragment>
   )
 

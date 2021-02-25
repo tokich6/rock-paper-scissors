@@ -4,9 +4,9 @@ import Header from './components/Header/Header';
 import Hand from './components/Hand/Hand';
 import Modal from './components/Modal/Modal'
 import Button from './components/Button/Button';
-import { ReactComponent as Paper } from './assets/images/icon-paper.svg';
-import { ReactComponent as Rock } from './assets/images/icon-rock.svg';
-import { ReactComponent as Scissors } from './assets/images/icon-scissors.svg';
+import paper from './assets/images/icon-paper.svg';
+import rock from './assets/images/icon-rock.svg';
+import scissors from './assets/images/icon-scissors.svg';
 
 
 
@@ -74,11 +74,11 @@ function App() {
 
   const pickHand = hand => {
     if (hand === 'scissors') {
-      return <Scissors />
+      return scissors
     } else if (hand === 'rock') {
-      return <Rock />;
+      return rock;
     } else {
-      return <Paper />
+      return paper;
     }
   }
 
@@ -129,14 +129,14 @@ const compCircleBackground=() => {
           !gameOn ?
             <section className='playground'>
               {/* <span className='paper-scissors-div'> */}
-                <Hand type='paper' onClick={playRound} src={<Paper />} />
-                <Hand type='scissors' onClick={playRound} src={<Scissors />} />
+                <Hand type='paper' onClick={playRound} src={paper} />
+                <Hand type='scissors' onClick={playRound} src={scissors} />
               {/* </span> */}
               {/* <div className='triangle'>
                 <Triangle title='triangle' />
               </div> */}
               {/* <div className='rock-div'> */}
-                <Hand type='rock' onClick={playRound} src={<Rock />} />
+                <Hand type='rock' onClick={playRound} src={rock} />
               {/* </div> */}
             </section>
 
