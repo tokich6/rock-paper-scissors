@@ -1,5 +1,5 @@
 .modal-container {
-  width: 50%;
+  /* width: 50%; */
   height: auto;
   background: aliceblue;
   color: black;
@@ -31,16 +31,8 @@
 .image-rules {
   text-align: center;
 }
-@media (min-width: 1199px) {
-  .modal-container {
-    width: 30%;
-  }
-  .heading {
-    width: 60%;
-  }
-}
 
-@media (max-width: 749px) {
+@media (max-width: 563px) {
   .modal-container {
    width: 100%;
    height: 100%;

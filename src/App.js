@@ -138,7 +138,7 @@ function App() {
 
             <div className='player-selection'>
               <h1>You Picked</h1>
-              <figure className={playerCircleBackground()}>
+              <figure className={playerCircleBackground()} >
                 <Hand type={playerSelection} src={pickHand(playerSelection)} disabled />
               </figure>
             </div>

@@ -8,6 +8,10 @@
   outline: none;
   margin: 2rem;
 }
+.hand:hover {
+  transform: scale(1.1);
+  transition: 0.5s;
+}
 
 .hand .img-wrapper {
   width: 9rem;
@@ -39,8 +43,8 @@
     margin: 1rem;
   }
   .hand .img-wrapper {
-    width: 7.5rem;
-    height: 7.5rem;
+    width: 7rem;
+    height: 7rem;
   }
   .img-wrapper img {
     padding: 2rem;

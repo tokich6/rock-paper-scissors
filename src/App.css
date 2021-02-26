@@ -9,7 +9,12 @@ html {
 }
 
 body {
-  background: radial-gradient(circle at top, hsl(214, 47%, 23%), hsl(237, 49%, 15%)) fixed;
+  background: radial-gradient(
+      circle at 50% 10%,
+      hsl(214, 47%, 23%),
+      hsl(237, 49%, 15%)
+    )
+    fixed;
   color: aliceblue;
 }
 
@@ -28,9 +33,11 @@ body {
 
 .hand-selections {
   display: flex;
-  align-items: center;
   justify-content: center;
+  gap: 2rem;
+  max-width: 100%;
 }
+
 .outcome {
   text-align: center;
   align-self: center;
@@ -52,16 +59,23 @@ body {
 }
 .player-selection,
 .house-selection {
-  align-self: self-start;
-  justify-self: center;
+  transform: scale(1.1);
+}
+
+.player-selection .hand:hover,
+.house-selection .hand:hover {
+  transform: none;
+  transition: none;
 }
 .player-selection h1,
 .house-selection h1 {
   text-transform: uppercase;
   letter-spacing: 0.1rem;
   font-weight: 300;
+  /* font-size: 1.2rem; */
   text-align: center;
-  margin-bottom: 2rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
   position: relative;
   z-index: 2;
 }
@@ -72,24 +86,54 @@ body {
 }
 
 .winner {
-  width: 25rem;
-  height: 25rem;
+  position: relative;
+}
+.winner ::after {
+  content: "";
+  position: absolute;
+  top: 12%;
+  left: 12%;
+  width: 75%;
+  height: 75%;
   border-radius: 50%;
-  outline: none;
-  background: repeating-radial-gradient(
-    hsl(237, 49%, 15%),
-    hsl(214, 47%, 23%) 25%
-  );
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: -5.5rem;
+  -webkit-box-shadow: 0 0 0 40px rgb(255 255 255 / 1%),
+    0 0 0 90px rgb(255 255 255 / 1%), 0 0 0 140px rgb(255 255 255 / 1%);
+  box-shadow: 0 0 0 40px rgb(255 255 255 / 1%), 0 0 0 90px rgb(255 255 255 / 1%),
+    0 0 0 140px rgb(255 255 255 / 1%);
 }
 
+@media (max-width: 753px) {
+  .outcome {
+    position: absolute;
+    bottom: 15%;
+  }
+
+  .player-selection h1,
+  .house-selection h1 {
+    font-size: 1.2rem;
+  }
+}
 @media (max-width: 563px) {
   .playground {
     width: 24rem;
     height: 27rem;
+  }
+  .hand-selections {
+    margin-top: 5rem;
+    gap: 3rem;
+  }
+  .player-selection,
+  .house-selection {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  .outcome {
+    position: absolute;
+    bottom: 20%;
+  }
+  .outcome,
+  .outcome .btn {
+    font-size: 1rem;
   }
 }
 
@@ -99,5 +143,3 @@ body {
     /* height: 24rem; */
   }
 }
-
-
