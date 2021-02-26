@@ -25,12 +25,7 @@ body {
   background-repeat: no-repeat;
   background-position: center;
 }
-@media (max-width: 563px) {
-  .playground {
-    width: 24rem;
-    height: 27rem;
-  }
-}
+
 .hand-selections {
   display: flex;
   align-items: center;
@@ -91,23 +86,18 @@ body {
   margin-top: -5.5rem;
 }
 
-footer {
-  position: fixed;
-  bottom: 1rem;
-  right: 0;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-}
-footer .btn {
-  color: aliceblue;
-  font-size: 0.9rem;
-  background: none;
-  margin: 0 1rem;
+@media (max-width: 563px) {
+  .playground {
+    width: 24rem;
+    height: 27rem;
+  }
 }
 
-footer .btn:hover {
-  background: aliceblue;
-  color: hsl(237, 49%, 15%);
-  transition: 0.4s;
+@media (max-width: 380px) {
+  .playground {
+    width: 23rem;
+    /* height: 24rem; */
+  }
 }
+
+

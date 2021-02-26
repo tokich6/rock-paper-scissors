@@ -4,6 +4,7 @@ import Header from './components/Header/Header';
 import Hand from './components/Hand/Hand';
 import Modal from './components/Modal/Modal'
 import Button from './components/Button/Button';
+import Footer from './components/Footer/Footer';
 import paper from './assets/images/icon-paper.svg';
 import rock from './assets/images/icon-rock.svg';
 import scissors from './assets/images/icon-scissors.svg';
@@ -122,7 +123,7 @@ function App() {
   return (
     <React.Fragment>
       <Header score={score} />
-      <Modal onClick={closeModal} style={{ display: isModalVisible ? 'block' : 'none' }} />
+      <Modal onClick={closeModal} style={{ display: isModalVisible ? 'grid' : 'none' }} />
 
       {
         !gameOn ?
@@ -160,11 +161,7 @@ function App() {
           </section>
 
       }
-
-      <footer>
-        <Button text='Reset score' onClick={resetScore} />
-        <Button text='Rules' onClick={showModal} />
-      </footer>
+      <Footer onReset={resetScore} onModal={showModal} />
 
     </React.Fragment>
   )
