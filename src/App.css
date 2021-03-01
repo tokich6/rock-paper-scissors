@@ -72,7 +72,6 @@ body {
   text-transform: uppercase;
   letter-spacing: 0.1rem;
   font-weight: 300;
-  /* font-size: 1.2rem; */
   text-align: center;
   margin-top: 1rem;
   margin-bottom: 1rem;
@@ -102,25 +101,23 @@ body {
     0 0 0 140px rgb(255 255 255 / 1%);
 }
 
-@media (max-width: 753px) {
+@media (max-width: 753px) and (orientation: portrait) {
   .outcome {
     position: absolute;
     bottom: 15%;
   }
-
   .player-selection h1,
   .house-selection h1 {
     font-size: 1.2rem;
   }
 }
-@media (max-width: 563px) {
+@media (max-width: 563px) and (orientation: portrait) {
   .playground {
     width: 24rem;
     height: 27rem;
   }
   .hand-selections {
     margin-top: 5rem;
-    gap: 3rem;
   }
   .player-selection,
   .house-selection {
@@ -137,9 +134,12 @@ body {
   }
 }
 
-@media (max-width: 380px) {
+@media (max-width: 380px) and (orientation: portrait) {
   .playground {
     width: 23rem;
-    /* height: 24rem; */
+  }
+  .hand-selections {
+    margin-top: 0;
+    gap: 0;
   }
 }

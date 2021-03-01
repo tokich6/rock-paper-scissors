@@ -10,7 +10,7 @@
 }
 .hand:hover {
   transform: scale(1.1);
-  transition: 0.5s;
+  transition: transform 0.5s;
 }
 
 .hand .img-wrapper {
@@ -36,6 +36,30 @@
   background: linear-gradient(to top, hsl(39, 89%, 49%), hsl(40, 84%, 53%));
 }
 
+.blank {
+  background-color: hsl(237, 49%, 15%);
+  background-color: hsl(228, 49%, 18%);
+  box-shadow: none;
+  animation-name: pulse;
+  animation-duration: 4s;
+  animation-timing-function: ease-in-out;
+}
+.blank .img-wrapper {
+  background-color: hsl(237, 49%, 15%);
+  background-color: hsl(228, 49%, 18%);
+  box-shadow: none;
+}
+.blank .img-wrapper img {
+  display: none;
+}
+
+@keyframes pulse {
+  0% {transform: scale(1)}
+  25% {transform: scale(1.2)}
+  50% {transform: scale(1)}
+  75% {transform: scale(1.2)}
+  100% {transform: scale(1)}
+}
 @media (max-width: 563px) {
   .hand {
     width: 9rem;

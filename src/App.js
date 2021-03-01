@@ -19,6 +19,7 @@ function App() {
   const [isWinner, setWinner] = useState('');
 
   const [gameOn, setGameOn] = useState(false);
+  const [isCompSelectionBlank, setIsCompSelectionBlank] = useState(true);
   const [showOutcome, setShowOutcome] = useState(false);
   const [isModalVisible, setModal] = useState(false);
 
@@ -29,7 +30,7 @@ function App() {
   useEffect(() => {
     setTimeout(() => {
       return updateScore(playerSelection, computerSelection);
-    }, 1000)
+    }, 5000)
   }, [playerSelection, computerSelection]);
 
   const showModal = () => setModal(true);
@@ -46,8 +47,11 @@ function App() {
     getComputerSelection();
     setGameOn(true);
     setTimeout(() => {
+      return setIsCompSelectionBlank(false)
+    }, 4000)
+    setTimeout(() => {
       return setShowOutcome(true)
-    }, 1000)
+    }, 5000)
   }
 
   function updateScore(player, computer) {
@@ -98,6 +102,7 @@ function App() {
     setComputerSelection('')
     setWinner('');
     setShowOutcome(false);
+    setIsCompSelectionBlank(true);
     setGameOn(false);
   }
 
@@ -154,9 +159,14 @@ function App() {
 
             <div className='house-selection'>
               <h1>The house picked</h1>
-              <figure className={compCircleBackground()}>
-                <Hand type={computerSelection} src={pickHand(computerSelection)} disabled />
-              </figure>
+              {
+                isCompSelectionBlank ? <Hand type='blank' src='' disabled />
+                 :
+                  <figure className={compCircleBackground()}>
+                    <Hand type={computerSelection} src={pickHand(computerSelection)} disabled />
+                  </figure>
+              }
+
             </div>
           </section>
 
