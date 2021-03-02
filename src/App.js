@@ -1,19 +1,27 @@
 import React, { useState, useEffect } from 'react';
-import './App.css';
+// components
 import Header from './components/Header/Header';
 import Hand from './components/Hand/Hand';
 import Modal from './components/Modal/Modal'
 import Button from './components/Button/Button';
 import Footer from './components/Footer/Footer';
+// images
 import paper from './assets/images/icon-paper.svg';
 import rock from './assets/images/icon-rock.svg';
 import scissors from './assets/images/icon-scissors.svg';
+import lizard from './assets/images/icon-lizard.svg';
+import spock from './assets/images/icon-spock.svg';
+import { ReactComponent as Rules } from './assets/images/image-rules.svg';
+import { ReactComponent as AdvancedRules } from './assets/images/image-rules-bonus.svg';
+// styles
+import './App.css';
 
 
 
 function App() {
 
   const [score, setScore] = useState(sessionStorage.getItem('localStorageScore') || 0)
+  const [isAdvanced, setIsAdvanced] = useState(false);
   const [playerSelection, setPlayerSelection] = useState('');
   const [computerSelection, setComputerSelection] = useState('');
   const [isWinner, setWinner] = useState('');
@@ -33,10 +41,20 @@ function App() {
     }, 5000)
   }, [playerSelection, computerSelection]);
 
+  console.log(isAdvanced);
+  // footer props
   const showModal = () => setModal(true);
   const closeModal = () => setModal(false);
+  const setAdvancedMode = () => {
+    if (!isAdvanced) {
+      setIsAdvanced(true);
+    } else {
+      setIsAdvanced(false);
+    }
+  }
 
   const computerOptions = ['rock', 'paper', 'scissors'];
+
   const getComputerSelection = () => {
     let random = computerOptions[Math.floor(Math.random() * computerOptions.length)];
     return setComputerSelection(random);
@@ -79,7 +97,7 @@ function App() {
 
   const pickHand = hand => {
     if (hand === 'scissors') {
-      return scissors
+      return scissors;
     } else if (hand === 'rock') {
       return rock;
     } else {
@@ -110,40 +128,39 @@ function App() {
     sessionStorage.setItem('localStorageScore', 0);
     setScore(0);
   }
-  const playerCircleBackground = () => {
-    let className = ''
-    if (isWinner === 'player') {
-      className += 'winner'
-    }
-    return className;
-  }
-  const compCircleBackground = () => {
-    let className = '';
-    if (isWinner === 'computer') {
-      className += 'winner'
-    }
-    return className;
-  }
+
 
   return (
     <React.Fragment>
-      <Header score={score} />
-      <Modal onClick={closeModal} style={{ display: isModalVisible ? 'grid' : 'none' }} />
+      <Header score={score} isAdvanced={isAdvanced} />
+      <Modal onClick={closeModal} imgSrc={!isAdvanced ? <Rules /> : <AdvancedRules />} style={{ display: isModalVisible ? 'grid' : 'none' }} />
 
       {
         !gameOn ?
-          <section className='playground'>
-            <Hand type='paper' onClick={playRound} src={paper} />
-            <Hand type='scissors' onClick={playRound} src={scissors} />
-            <Hand type='rock' onClick={playRound} src={rock} />
+          <section className={`playground ${!isAdvanced ? 'playground-normal' : 'playground-advanced'}`}>
+            {
+              !isAdvanced ?
+                <React.Fragment>
+                  <Hand type='paper' onClick={playRound} src={paper} isAdvanced={isAdvanced} />
+                  <Hand type='scissors' onClick={playRound} src={scissors} isAdvanced={isAdvanced} />
+                  <Hand type='rock' onClick={playRound} src={rock} isAdvanced={isAdvanced} />
+                </React.Fragment>
+                :
+                <React.Fragment>
+                  <Hand type='spock' onClick={playRound} src={spock} isAdvanced={isAdvanced} />
+                  <Hand type='scissors' onClick={playRound} src={scissors} isAdvanced={isAdvanced} />
+                  <Hand type='paper' onClick={playRound} src={paper} isAdvanced={isAdvanced} />
+                  <Hand type='lizard' onClick={playRound} src={lizard} isAdvanced={isAdvanced} />
+                  <Hand type='rock' onClick={playRound} src={rock} isAdvanced={isAdvanced} />
+                </React.Fragment>
+            }
           </section>
 
           :
           <section className='hand-selections'>
-
             <div className='player-selection'>
               <h1>You Picked</h1>
-              <figure className={playerCircleBackground()} >
+              <figure className={isWinner === 'player' ? 'winner' : ''} >
                 <Hand type={playerSelection} src={pickHand(playerSelection)} disabled />
               </figure>
             </div>
@@ -161,8 +178,8 @@ function App() {
               <h1>The house picked</h1>
               {
                 isCompSelectionBlank ? <Hand type='blank' src='' disabled />
-                 :
-                  <figure className={compCircleBackground()}>
+                  :
+                  <figure className={isWinner === 'computer' ? 'winner' : ''}>
                     <Hand type={computerSelection} src={pickHand(computerSelection)} disabled />
                   </figure>
               }
@@ -171,7 +188,7 @@ function App() {
           </section>
 
       }
-      <Footer onReset={resetScore} onModal={showModal} />
+      <Footer onReset={resetScore} onModal={showModal} onAdvanced={setAdvancedMode} isAdvanced={isAdvanced} />
 
     </React.Fragment>
   )

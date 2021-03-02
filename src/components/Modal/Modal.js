@@ -1,19 +1,18 @@
 import './Modal.css';
 import { ReactComponent as CloseIcon } from '../../assets/images/icon-close.svg';
-import { ReactComponent as Rules } from '../../assets/images/image-rules.svg';
 
 
-function Modal(props) {
+const Modal = ({style, onClick, imgSrc }) => {
   return (
-    <section className='modal-container' style={props.style}>
+    <section className='modal-container' style={style}>
       <div className='modal-heading'>
         <h1>Rules</h1>
-        <div onClick={props.onClick} className='close-icon'>
+        <div onClick={onClick} className='close-icon'>
           <CloseIcon title='icon-close' />
         </div>
       </div>
       <div className='image-rules'>
-        <Rules title='game rules' />
+        {imgSrc}
       </div>
 
     </section>

@@ -3,7 +3,7 @@ import './Hand.css';
 
 function Hand(props) {
 
-  let handStyle = `hand + ${props.type}`;
+  let handStyle = `hand ${props.type} ${!props.isAdvanced ? 'hand-normal' : 'hand-advanced'}`;
 
   return (
     <React.Fragment>

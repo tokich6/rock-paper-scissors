@@ -3,11 +3,14 @@ import Button from '../Button/Button';
 
 
 
-function Footer(props) {
+const Footer = ({isAdvanced, onAdvanced, onReset, onModal}) => {
   return (
     <footer>
-      <Button text='Reset score' onClick={props.onReset} />
-      <Button text='Rules' onClick={props.onModal} />
+      <Button text={!isAdvanced ? 'advanced mode' : 'normal mode'} onClick={onAdvanced} />
+      <div>
+        <Button text='Reset score' onClick={onReset} />
+        <Button text='Rules' onClick={onModal} />
+      </div>
     </footer>
   )
 }

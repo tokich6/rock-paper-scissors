@@ -1,13 +1,13 @@
 import './Header.css';
 import Score from '../Score/Score';
 import logo from '../../assets/images/logo.svg';
+import logo_bonus from '../../assets/images/logo-bonus.svg';
 
-function Header(props) {
+const Header = ({score, isAdvanced}) => {
   return (
     <section className='heading'>
-      {/* <Logo title='logo'/> */}
-      <img  src={logo} alt='rock paper scissors'/>
-      <Score score={props.score} />
+      <img  src={!isAdvanced ? logo : logo_bonus} alt='rock paper scissors'/>
+      <Score score={score} />
     </section>
   )
 }

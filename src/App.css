@@ -19,16 +19,22 @@ body {
 }
 
 .playground {
-  width: 35rem;
   height: 30rem;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   margin: 0 auto;
-  background-image: url(./assets/images/bg-triangle.svg);
   background-repeat: no-repeat;
   background-position: center;
+}
+.playground-normal {
+  width: 35rem;
+  background-image: url(./assets/images/bg-triangle.svg);
+}
+.playground-advanced {
+  width: 45rem;
+  background-image: url(./assets/images/bg-pentagon.svg);
 }
 
 .hand-selections {
