@@ -33,8 +33,25 @@ body {
   background-image: url(./assets/images/bg-triangle.svg);
 }
 .playground-advanced {
-  width: 45rem;
+  width: 30rem;
   background-image: url(./assets/images/bg-pentagon.svg);
+  position: relative;
+}
+.playground-advanced .scissors,
+.playground-advanced .paper,
+.playground-advanced .spock {
+  position: absolute;
+}
+.playground-advanced .scissors {
+  top: -3%;
+}
+.playground-advanced .paper {
+  top: 20%;
+  right: -3%;
+}
+.playground-advanced .spock {
+  top: 20%;
+  left: -3%;
 }
 
 .hand-selections {
@@ -118,9 +135,29 @@ body {
   }
 }
 @media (max-width: 563px) and (orientation: portrait) {
-  .playground {
+  .playground-normal {
     width: 24rem;
     height: 27rem;
+  }
+  .playground-advanced {
+    width: 19rem;
+    height: 25rem;
+  }
+  .playground-advanced .spock {
+    left: -20%;
+  }
+  .playground-advanced .paper {
+    right: -20%;
+  }
+  .playground-advanced .lizard {
+    position: absolute;
+    left: -10%;
+    bottom: -5%;
+  }
+  .playground-advanced .rock {
+    position: absolute;
+    right: -10%;
+    bottom: -5%;
   }
   .hand-selections {
     margin-top: 5rem;
@@ -141,7 +178,7 @@ body {
 }
 
 @media (max-width: 380px) and (orientation: portrait) {
-  .playground {
+  .playground-normal {
     width: 23rem;
   }
   .hand-selections {

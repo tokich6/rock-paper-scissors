@@ -112,6 +112,17 @@
   .hand-normal .img-wrapper img {
     padding: 2rem;
   }
+  .hand-advanced {
+    width: 6.5rem;
+    height: 6.5rem;
+  }
+  .hand-advanced .img-wrapper {
+    width: 4.5rem;
+    height: 4.5rem;
+  }
+  .hand-advanced .img-wrapper img {
+    padding: 1rem;
+  }
 }
 
 @media (max-width: 380px) {
