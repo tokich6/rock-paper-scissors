@@ -13,9 +13,7 @@ import lizard from './assets/images/icon-lizard.svg';
 import spock from './assets/images/icon-spock.svg';
 import { ReactComponent as Rules } from './assets/images/image-rules.svg';
 import { ReactComponent as AdvancedRules } from './assets/images/image-rules-bonus.svg';
-// styles
 import './App.css';
-
 
 
 function App() {
@@ -41,26 +39,8 @@ function App() {
     }, 5000)
   }, [playerSelection, computerSelection]);
 
-  console.log(isAdvanced);
-  // footer props
-  const showModal = () => setModal(true);
-  const closeModal = () => setModal(false);
-  const setAdvancedMode = () => {
-    if (!isAdvanced) {
-      setIsAdvanced(true);
-    } else {
-      setIsAdvanced(false);
-    }
-  }
 
-  const computerOptions = ['rock', 'paper', 'scissors'];
-
-  const getComputerSelection = () => {
-    let random = computerOptions[Math.floor(Math.random() * computerOptions.length)];
-    return setComputerSelection(random);
-  }
-
-  function playRound(hand) {
+  const playRound = hand => {
     setPlayerSelection(hand)
     getComputerSelection();
     setGameOn(true);
@@ -72,27 +52,15 @@ function App() {
     }, 5000)
   }
 
-  function updateScore(player, computer) {
-    if ((player === 'rock' && computer === 'scissors')
-      || (player === 'scissors' && computer === 'paper')
-      || (player === 'paper' && computer === 'rock')) {
-      setWinner('player'); // player wins
-      setScore(prevScore => {
-        return ++prevScore;
-      })
-    } else if (player !== computer) { //if not the above and not equal, then comp wins
-      console.log('computer');
-      setWinner('computer');
-      setScore(prevScore => {
-        return --prevScore;
-      })
-    } else { //player === computer or both are ''
-      console.log('nothing changes');
-      setWinner('draw');
-      setScore(prevScore => {
-        return prevScore;
-      })
+  const getComputerSelection = () => {
+    let computerOptions = [];
+    if (!isAdvanced) {
+      computerOptions = ['rock', 'paper', 'scissors'];
+    } else {
+      computerOptions = ['rock', 'paper', 'scissors', 'lizard', 'spock'];
     }
+    let random = computerOptions[Math.floor(Math.random() * computerOptions.length)];
+    return setComputerSelection(random);
   }
 
   const pickHand = hand => {
@@ -100,8 +68,12 @@ function App() {
       return scissors;
     } else if (hand === 'rock') {
       return rock;
-    } else {
+    } else if (hand === 'paper') {
       return paper;
+    } else if (hand === 'lizard') {
+      return lizard;
+    } else {
+      return spock;
     }
   }
 
@@ -115,13 +87,53 @@ function App() {
     }
   }
 
-  const resetHands = () => {
+  const updateScore = (player, computer) => {
+    if ((player === 'rock' && computer === 'scissors')
+      || (player === 'scissors' && computer === 'paper')
+      || (player === 'paper' && computer === 'rock')
+      || (player === 'rock' && computer === 'lizard')
+      || (player === 'lizard' && computer === 'spock')
+      || (player === 'spock' && computer === 'scissors')
+      || (player === 'spock' && computer === 'rock')
+      || (player === 'scissors' && computer === 'lizard')
+      || (player === 'lizard' && computer === 'paper')
+      || (player === 'paper' && computer === 'spock')) {
+      setWinner('player');
+      setScore(prevScore => {
+        return ++prevScore;
+      })
+    } else if (player !== computer) { //if not the above and not equal, then comp wins
+      setWinner('computer');
+      setScore(prevScore => {
+        return --prevScore;
+      })
+    } else { //player === computer or both are ''
+      setWinner('draw');
+      setScore(prevScore => {
+        return prevScore;
+      })
+    }
+  }
+
+  const resetGame = () => {
     setPlayerSelection('');
     setComputerSelection('')
     setWinner('');
     setShowOutcome(false);
     setIsCompSelectionBlank(true);
     setGameOn(false);
+  }
+
+  // modal & footer props
+  const showModal = () => setModal(true);
+  const closeModal = () => setModal(false);
+
+  const toggleAdvancedMode = () => {
+    if (!isAdvanced) {
+      setIsAdvanced(true);
+    } else {
+      setIsAdvanced(false);
+    }
   }
 
   const resetScore = () => {
@@ -155,7 +167,6 @@ function App() {
                 </React.Fragment>
             }
           </section>
-
           :
           <section className='hand-selections'>
             <div className='player-selection'>
@@ -164,13 +175,14 @@ function App() {
                 <Hand type={playerSelection} src={pickHand(playerSelection)} disabled />
               </figure>
             </div>
+
             {
               showOutcome &&
               <div className='outcome'>
                 <h1 className='outcome-heading'>{
                   getWinner()
                 }</h1>
-                <Button onClick={resetHands} text='Play again'></Button>
+                <Button onClick={resetGame} text='Play again'></Button>
               </div>
             }
 
@@ -183,12 +195,11 @@ function App() {
                     <Hand type={computerSelection} src={pickHand(computerSelection)} disabled />
                   </figure>
               }
-
             </div>
           </section>
-
       }
-      <Footer onReset={resetScore} onModal={showModal} onAdvanced={setAdvancedMode} isAdvanced={isAdvanced} />
+
+      <Footer onReset={resetScore} onModal={showModal} onAdvanced={toggleAdvancedMode} isAdvanced={isAdvanced} />
 
     </React.Fragment>
   )
