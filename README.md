@@ -46,5 +46,24 @@ If the player wins, they gain 1 point. If the computer wins, the player loses on
 
 Not sure what Rock, Paper, Scissors, Lizard, Spock is? [Check out this clip from The Big Bang Theory](https://www.youtube.com/watch?v=iSHPVCBsnLw).
 
+## To run my solution
+
+1. get the source code
+
+```
+git clone https://github.com/tokich6/vacation_app.git
+```
+
+2. install required packages
+
+```
+npm install
+```
+
+3. run application
+```
+npm start
+```
+
 
 
