@@ -50,7 +50,7 @@ Not sure what Rock, Paper, Scissors, Lizard, Spock is? [Check out this clip from
 1. get the source code
 
 ```
-git clone https://github.com/tokich6/vacation_app.git
+https://github.com/tokich6/rock-paper-scissors.git
 ```
 
 2. install required packages
