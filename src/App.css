@@ -67,6 +67,7 @@ body {
 }
 .outcome .btn {
   color: hsl(237, 49%, 15%);
+  background-color: aliceblue;
   padding: 0.6rem 2.2rem;
   letter-spacing: 0.1rem;
   font-weight: 600;
