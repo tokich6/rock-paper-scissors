@@ -1,5 +1,4 @@
 .modal-container {
-  /* width: 50%; */
   height: auto;
   background: aliceblue;
   color: black;
@@ -41,7 +40,6 @@
    padding: 1rem;
   }
   .modal-heading {
-    display: grid;
     justify-content: center;
     align-self: center;
     margin-bottom: 0;

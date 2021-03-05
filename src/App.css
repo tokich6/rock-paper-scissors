@@ -45,6 +45,24 @@ body {
 .playground-advanced .scissors {
   top: -3%;
 }
+
+/* safari only browser */
+@media not all and (min-resolution: 0.001dpcm) {
+  @supports (-webkit-appearance: none) {
+    /* to fix absolutely positioned element not centered in flex container, working fine in other broswers  */
+    .playground-advanced .scissors {
+      left: 30%;
+    }
+    /* to fix flexbox gap not suppored by safari */
+    .player-selection {
+      margin-right: 1rem;
+    }
+    .house-selection {
+      margin-left: 1rem;
+    }
+  }
+}
+
 .playground-advanced .paper {
   top: 20%;
   right: -3%;
@@ -57,7 +75,7 @@ body {
 .hand-selections {
   display: flex;
   justify-content: center;
-  gap: 2rem;
+  gap: 2rem;  /* gap with flex not yet supported by safari, workaround above */
   max-width: 100%;
 }
 
@@ -70,6 +88,7 @@ body {
   background-color: aliceblue;
   padding: 0.6rem 2.2rem;
   letter-spacing: 0.1rem;
+  font-size: 1rem;
   font-weight: 600;
 }
 .outcome .btn:hover {
@@ -81,13 +100,18 @@ body {
   letter-spacing: 0.1rem;
   margin-bottom: 0.5rem;
 }
+
 .player-selection,
 .house-selection {
+  -webkit-transform: scale(1.1);
+  -ms-transform: scale(1.1);
   transform: scale(1.1);
 }
 
 .player-selection .hand:hover,
 .house-selection .hand:hover {
+  -webkit-transform: none;
+  -ms-transform: none;
   transform: none;
   transition: none;
 }
@@ -159,6 +183,14 @@ body {
     position: absolute;
     right: -10%;
     bottom: -5%;
+  }
+  /* safari only browser to fix absolutely positioned element not centered in flex container, working fine in other broswers */
+  @media not all and (min-resolution: 0.001dpcm) {
+    @supports (-webkit-appearance: none) {
+      .playground-advanced .scissors {
+        left: 22%;
+      }
+    }
   }
   .hand-selections {
     margin-top: 5rem;
