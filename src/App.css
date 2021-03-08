@@ -154,12 +154,12 @@ body {
     position: absolute;
     bottom: 15%;
   }
-  .player-selection h1,
-  .house-selection h1 {
-    font-size: 1.2rem;
-  }
 }
 @media (max-width: 563px) and (orientation: portrait) {
+  .player-selection h1,
+  .house-selection h1 {
+    font-size: 1rem;
+  }
   .playground-normal {
     width: 24rem;
     height: 27rem;
@@ -204,18 +204,20 @@ body {
     position: absolute;
     bottom: 20%;
   }
-  .outcome,
-  .outcome .btn {
-    font-size: 1rem;
+  .outcome-heading {
+    font-size: 2.5rem;
   }
 }
 
 @media (max-width: 380px) and (orientation: portrait) {
-  .playground-normal {
-    width: 23rem;
-  }
+  
   .hand-selections {
     margin-top: 0;
     gap: 0;
+  }
+}
+@media (max-width: 320px) and (orientation: portrait) {
+  .outcome {
+    bottom: 10%;
   }
 }

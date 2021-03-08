@@ -1,11 +1,12 @@
 footer {
   position: fixed;
-  bottom: 1rem;
+  bottom: 0.5rem;
   right: 0;
   width: 100%;
   display: flex;
   justify-content: space-between;
 }
+
 footer .btn {
   color: aliceblue;
   font-size: 0.9rem;
@@ -18,12 +19,18 @@ footer .btn:hover {
   color: hsl(237, 49%, 15%);
   transition: 0.4s;
 }
-@media (max-width: 563px) {
+footer a {
+  color: aliceblue;
+  text-decoration: none;
+  margin-right: 1rem;
+}
+
+
+@media (max-width: 595px) {
   footer {
     display: grid;
     gap: 1rem;
     justify-content: center;
-    bottom: 2rem;
   }
   footer .btn {
     font-size: 0.8rem;
